@@ -1,42 +1,43 @@
- (function(){
+(function(){
 
-		'use strict';
+    "use strict";
 
     var app = {
         init: function() {
             routes.init();
-            // sections.init();
         }
-
     };
 
    var routes = {
         init: function() {
+            var startHash = window.location.hash;
+
+            // check if hash value is empty otherwise just use the hash value
+            (!startHash) ? [startHash = "home", sections.toggle(startHash)] : (startHash ? startHash : startHash = startHash)
+
+            //Add event hashchange listener to toggle function
             window.addEventListener("hashchange", function(){
-                sections.toggle(location.hash.split('#')[1]);
+                sections.toggle(location.hash.split("#")[1]);
             });
         }
     };
 
+    //Get all sections and add class if selected link is equal to section id
    var sections = {
-   	/* this is location.hash */
-        toggle: function(route) {
-            var section = document.querySelectorAll('main section');
-            for (var i=0; i < section.length; i++){
-            	var el = section[i];
-            	var elId = section[i].id;
 
-            	(elId === route) ? el.classList.remove("hide") : el.classList.add("hide");
+        toggle: function(route) {
+            var getSections = document.querySelectorAll("main section");
+            var i;
+            var selectSection;
+            var sectionsId;
+            for (i=0; i < getSections.length; i++){
+            	selectSection = getSections[i];
+            	sectionsId = getSections[i].id;
+            	(sectionsId === route) ? selectSection.classList.remove("hide") : selectSection.classList.add("hide");
             }
         },
-				// init: function(){
-				//   		console.log((route === ' ') ? "empty" : "full");
-
-				// }
-
-    };
+    }
 
    app.init();
 
 }());
-
