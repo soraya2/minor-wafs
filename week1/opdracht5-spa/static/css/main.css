@@ -32,7 +32,7 @@ section > nav {
 }
 
 section > nav > ul {
-	display: inherit;
+	display: flex;
 }
 
 section > nav > ul > li{
