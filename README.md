@@ -33,7 +33,7 @@ If you are not familiar with the full concept of javascript you might not fully 
 
 spa cons
 
-You only have to load the content once 
+- You only have to load the content once 
 Because your loading only one web page it helps users with limited bandwidth.1
 
 
@@ -41,7 +41,7 @@ Because your loading only one web page it helps users with limited bandwidth.1
 spa pro’s
 
 Its seo friendly 
-The search engine sees different content and the webpage is therefore not user friendly because the user sees the content that would render if you. Therefore you would get a lower ranking in search engine results. 1
+- The search engine sees different content and the webpage is therefore not user friendly because the user sees the content that would render if you. Therefore you would get a lower ranking in search engine results. 1
 
 
 1. http://www.shiftedup.com/2014/10/15/is-a-single-page-application-what-you-really-need
