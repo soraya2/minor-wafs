@@ -31,16 +31,16 @@ If you are not familiar with the full concept of javascript you might not fully 
 
 # Pros and cons single page application
 
-spa cons
+spa pro's
 
 - You only have to load the content once 
 Because your loading only one web page it helps users with limited bandwidth.1
 
 
 
-spa pro’s
+spa cons
 
-Its seo friendly 
+Its seo not friendly 
 - The search engine sees different content and the webpage is therefore not user friendly because the user sees the content that would render if you. Therefore you would get a lower ranking in search engine results. 1
 
 
