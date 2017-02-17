@@ -3,11 +3,6 @@ Repo for the Web app from scratch course (minor everything web)
 Single page application
 https://soraya2.github.io/minor-wafs/week1/opdracht5-spa/
 
-Week2 asignment
-
-https://soraya2.github.io/minor-wafs/week2/rijksmuseumApi/index.html
-
-
 
 # Pros and cons jQuery
 jQuery (what is it?)
