@@ -14,33 +14,35 @@ html , body{
 }
 
 body {
-	display: flex;
-	flex-wrap: wrap;
 	font-family: "Helvetica Neue", "Helvetica",sans-serif;
 	background: #40434E;
 	color: #ffffff;
 	font-weight: 100;
 }
 
+ul, ol{
+	list-style-position: inside;
+}
+
 body > section{
 	width: 100%;
 }
 
-section > nav {
+ nav {
 	width: 100%;
 	background-color:  #FDCFF3;
 }
 
-section > nav > ul {
+nav > ul {
 	display: flex;
 }
 
-section > nav > ul > li{
+nav > ul > li{
 	list-style-type: none;
 	padding: 1rem 1.2rem;
 }
 
-section > nav > ul > li a{
+nav > ul > li a{
 	text-decoration: none;
 	color: #40434E;
 	white-space: nowrap;
@@ -49,13 +51,20 @@ section > nav > ul > li a{
 }
 
 h1 {
-	color: green;
+	color: #ffffff;
 }
 
 .hide{
 	display: none;
 }
 
+.active{
+	background-color: green;
+}
+main{
+	padding: 2em 1em 2em;
+}
 main > section{
-		font-weight: 100;
+
+	font-weight: 100;
 }
