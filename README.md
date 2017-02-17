@@ -3,6 +3,9 @@ Repo for the Web app from scratch course (minor everything web)
 Single page application
 https://soraya2.github.io/minor-wafs/week1/opdracht5-spa/
 
+Week2 asignment
+file:///Users/soraya/GitHub/minor-wafs/week2/netflix/index.html
+
 
 
 # Pros and cons jQuery
