@@ -4,6 +4,7 @@ Single page application
 https://soraya2.github.io/minor-wafs/week1/opdracht5-spa/
 
 Week2 asignment
+
 file:///Users/soraya/GitHub/minor-wafs/week2/netflix/index.html
 
 
