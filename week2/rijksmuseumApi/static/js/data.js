@@ -1,7 +1,5 @@
 // url: "https://www.rijksmuseum.nl/api/nl/collection/?key=LTaH2LtF&format=json&q=rembrand"
 
-//to do using a template engine or es6 convertion
-//Turning short if else statements in to ternary operators
 (function() {
 
     'use strict';
@@ -34,7 +32,7 @@
 
             .on('success', function(info) {
               var artworkInfo = info.artObject;
-              // console.log(artworkInfo.longTitle,"description");
+              // console.log(artworkInfo);
 
               function returnHtml(){
 
@@ -89,44 +87,33 @@
 
             .on('success', function(data) {
 
-                  data.artObjects// < array
+                  // < array
 
                     // Verander elk object naar een string > <div>Naam</div>
 
-                  .map(function(artwork, i) {
-                    console.log(artwork.title);
-
                     function imageCheck(){
-                        if (artwork.webImage !== null){
-                            return artwork.webImage.url;
-                        }else{
+
+                        if (webImage !== null) {
+                          return webImage.url;
+
+                        }else {
                           return"./static/images/background_black.svg";
+
                         }
                     }
 
                     var source = document.getElementById("overview-template").innerHTML;//javascipt template
                     //content
-                    var content = {
-                      artId: artwork.objectNumber,
-                      artClassName: "art"+i,
-                      artMaker : artwork.principalOrFirstMaker,
-                      artImgUrl: imageCheck(),
-                      artDescription: artwork.title
-                    }
-                    //compile content naar html
-                    var template = Handlebars.compile(source);
-                    var htmlContent = template(content);
 
-                   document.getElementById('painting-overview').innerHTML += htmlContent;
-                  })
+                    var template = Handlebars.compile(source);
+                    var htmlContent = template(data);
+
+                   document.getElementById('painting-overview').innerHTML = htmlContent;
 
                   // Voeg elke string samen tot 1 grote string > <div>Naam</div><div>Naam</div>
-                  .reduce(function(html,currentSection) {
-                      return html+currentSection;
-                  });
 
                   getPaintingOverview=true;
-                  userEventRespond.init2(document.getElementById('painting-overview'));
+                  userEventRespond.artworkDetail(document.getElementById('painting-overview'));
             })
             .go();
         }
@@ -141,18 +128,15 @@
             });
         },
 
-        init2: function (selectPaintingOverview){
+        artworkDetail: function (selectPaintingOverview){
 
             if (getPaintingOverview === true){
               selectPaintingOverview.addEventListener('click', function(event){
                 event.preventDefault();
-                console.log(event.target.parentElement.id)
 
                 getData.details(event.target.parentElement.id);
                 routes.init();
               });
-            }else{
-              console.log('getPaintingOverview is false');
             }
           }
     };
@@ -160,9 +144,3 @@
     userEventRespond.init();
 
 }());
-
-
-
-
-
-

@@ -15,7 +15,7 @@
             var startHash = window.location.hash;
 
             if (startHash==="#home"){
-              console.log(getSections.children);
+              // console.log(getSections.children);
               // sections.toggle(startHash);
             }
             // check if hash value is empty otherwise just use the hash value

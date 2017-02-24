@@ -2,7 +2,10 @@
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-		<title>Home</title>
+		<script type="text/javascript" src="./static/js/lib/aja-min.js"></script>
+		<script type="text/javascript" src="./static/js/lib/routie.js"></script>
+		<script type="text/javascript" src="./static/js/lib/handlebars-v4.0.5.js"></script>
+		<title>Rijksmuseum api</title>
 
 		<link href="./static/css/main.css" rel="stylesheet">
 	</head>
@@ -34,7 +37,7 @@
 
 				<section id="details" class="content">
 					<div id="painting-details" class="painting" role="section-content">
-						<p class="link">ewoidwqoiwqioj<a href="#details"></a></p>
+<!-- 						<p class="link">ewoidwqoiwqioj</p> -->
 
 					</div>
 				</section>
@@ -49,24 +52,34 @@
 	<!--end start scherm -->
 		</main>
 
-		<script type="text/javascript" src="./static/js/lib/aja-min.js"></script>
-		<script type="text/javascript" src="./static/js/lib/routie.js"></script>
-		<script type="text/javascript" src="./static/js/lib/handlebars-v4.0.5.js"></script>
-
 		<script id = "overview-template" type="text/x-handlebars-template">
-				<div id = "{{artId}}" class ="{{artClassName}}" >
-						 <h1>{{artMaker}}</h1>
-						<img src="{{artImgUrl}}"><img>
-						<p>{{artDescription}}</p>
+		{{#each artObjects}}
+
+				<div id = "{{objectNumber}}" class ="{{artClassName}}">
+						 <h1>{{principalOrFirstMaker}}</h1>
+
+					{{#if webImage}}
+						<img src="{{webImage.url}}"><img>
+					{{else}}
+						<img src="static/images/background_black.svg"><img>
+					{{/if}}
+
+						<p>{{title}}</p>
+
 				</div>
+		{{/each}}
 		</script>
 
 		<script id = "detail-template" type="text/x-handlebars-template">
 
 				<div id="=art-details" class="painting" role="section-content">
+
 						 <h1>{{artMaker}}</h1>
+
 						<img src="{{artImgUrl}}"><img>
+
 						<p>{{artDescription}}</p>
+
 				</div>
 		</script>
 
