@@ -9,6 +9,7 @@
     var config, getData, userEventRespond;
     var getPaintingOverview = false;
     var form = document.querySelector('.search-form');
+    var htmlContent = '';
 
 
     config = {
@@ -51,16 +52,33 @@
                         return"Geen beschrijving beschikbaar";
                       }
                     }
-                  return  `
-                    <section class="item2">
-                        <h1>${artworkInfo.longTitle}</h1>
-                        <img src = ${imageAvailable()}></img>
-                        <p>${descriptionAvailable()}</p>
-                    </section>
-                  `;
-              }
 
-              document.getElementById('painting-details').innerHTML = returnHtml();
+               var source = document.getElementById("detail-template").innerHTML;//javascipt template
+                    //content
+                    var content = {
+                      artMaker : artworkInfo.principalOrFirstMaker,
+                      longTitle: artworkInfo.longTitle,
+                      artImgUrl: imageAvailable(),
+                      artDescription: descriptionAvailable()
+                    }
+                    //compile content naar html
+                    var template = Handlebars.compile(source);
+                    var htmlContent = template(content);
+
+                    return htmlContent
+
+                  // return  `
+                  //   <section class="item2">
+                  //       <h1>${artworkInfo.longTitle}</h1>
+                  //       <img src = ${imageAvailable()}></img>
+                  //       <p>${descriptionAvailable()}</p>
+                  //   </section>
+                  // `;
+
+}
+
+
+              document.getElementById('details').innerHTML = returnHtml();
             })
             .go();
       },
@@ -71,27 +89,35 @@
 
             .on('success', function(data) {
 
-                   document.getElementById('painting-overview').innerHTML = data.artObjects// < array
+                  data.artObjects// < array
 
                     // Verander elk object naar een string > <div>Naam</div>
 
                   .map(function(artwork, i) {
+                    console.log(artwork.title);
+
                     function imageCheck(){
-                          if (artwork.webImage !== null){
-                              return artwork.webImage.url;
-                          }else{
-                            return"./static/images/background_black.svg";
-                          }
-
+                        if (artwork.webImage !== null){
+                            return artwork.webImage.url;
+                        }else{
+                          return"./static/images/background_black.svg";
+                        }
                     }
-                     return `
-                          <section id="${artwork.objectNumber}" class="kunstwerk${i} kunstwerk">
-                                <h1>${artwork.principalOrFirstMaker}</h1>
-                                <img src = ${imageCheck()}></img>
-                                <p class="artwork-title">${artwork.title}</p>
-                          </section>
-                      `;
 
+                    var source = document.getElementById("overview-template").innerHTML;//javascipt template
+                    //content
+                    var content = {
+                      artId: artwork.objectNumber,
+                      artClassName: "art"+i,
+                      artMaker : artwork.principalOrFirstMaker,
+                      artImgUrl: imageCheck(),
+                      artDescription: artwork.title
+                    }
+                    //compile content naar html
+                    var template = Handlebars.compile(source);
+                    var htmlContent = template(content);
+
+                   document.getElementById('painting-overview').innerHTML += htmlContent;
                   })
 
                   // Voeg elke string samen tot 1 grote string > <div>Naam</div><div>Naam</div>
@@ -120,6 +146,8 @@
             if (getPaintingOverview === true){
               selectPaintingOverview.addEventListener('click', function(event){
                 event.preventDefault();
+                console.log(event.target.parentElement.id)
+
                 getData.details(event.target.parentElement.id);
                 routes.init();
               });

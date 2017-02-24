@@ -51,10 +51,28 @@
 
 		<script type="text/javascript" src="./static/js/lib/aja-min.js"></script>
 		<script type="text/javascript" src="./static/js/lib/routie.js"></script>
-<!-- 		<script type="text/javascript" src="./static/js/lib/handlebars-v4.0.5.js"></script> -->
+		<script type="text/javascript" src="./static/js/lib/handlebars-v4.0.5.js"></script>
+
+		<script id = "overview-template" type="text/x-handlebars-template">
+				<div id = "{{artId}}" class ="{{artClassName}}" >
+						 <h1>{{artMaker}}</h1>
+						<img src="{{artImgUrl}}"><img>
+						<p>{{artDescription}}</p>
+				</div>
+		</script>
+
+		<script id = "detail-template" type="text/x-handlebars-template">
+
+				<div id="=art-details" class="painting" role="section-content">
+						 <h1>{{artMaker}}</h1>
+						<img src="{{artImgUrl}}"><img>
+						<p>{{artDescription}}</p>
+				</div>
+		</script>
+
 		<script type="text/javascript" src="./static/js/data.js"></script>
 		<script type="text/javascript" src="./static/js/app.js"></script>
 	</body>
 </html>
 
-<!-- <script id="overview" type="text/x-handlebars-template"></script> -->
+
