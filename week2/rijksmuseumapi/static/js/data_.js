@@ -58,12 +58,12 @@
                       longTitle: artworkInfo.longTitle,
                       artImgUrl: imageAvailable(),
                       artDescription: descriptionAvailable()
-                    }
+                    };
                     //compile content naar html
                     var template = Handlebars.compile(source);
                     var htmlContent = template(content);
 
-                    return htmlContent
+                    return htmlContent;
 
                   // return  `
                   //   <section class="item2">

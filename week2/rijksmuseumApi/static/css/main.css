@@ -24,7 +24,6 @@ html {
 
 body {
 	font-family: "Helvetica Neue", "Helvetica",sans-serif;
-	font-size:18;
 	font-size: 100%;
 	font-weight: 300;
 }
@@ -77,7 +76,7 @@ form{
 }
 
 img{
-	width: 20em;
+	width: 50%;
 }
 
 p{
@@ -120,8 +119,6 @@ input[type='text']:focus, input[type='text']:hover{
 // .active{
 // 	background-color: green;
 // }
-
-
 
 
 main{
@@ -171,9 +168,23 @@ input[type='text']:focus, input[type='text']:hover{
 }
 
 #painting-overview{
-    display: inline-flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    max-width: 67em;
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 67em;
+}
 
+#home-overview{
+	display: flex;
+	flex-wrap: wrap;
+
+}
+
+#home-overview div{
+    width: 40vw;
+    box-shadow: 1px 1px 5px lightgrey;
+    margin: 0.5em;
+    border-radius: 0.1rem;
+    background: white;
+    padding: 1em;
 }
