@@ -107,6 +107,7 @@
 
                     var template = Handlebars.compile(source);
                     var htmlContent = template(data);
+                    console.log(htmlContent);
 
                    document.getElementById('painting-overview').innerHTML = htmlContent;
 
