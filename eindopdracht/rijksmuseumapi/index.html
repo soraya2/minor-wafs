@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+		<script type="text/javascript" src="./static/js/lib/aja-min.js"></script>
+		<script type="text/javascript" src="./static/js/lib/routie.js"></script>
+		<script type="text/javascript" src="./static/js/lib/handlebars-v4.0.5.js"></script>
+		<title>Rijksmuseum api</title>
+
+		<link href="./static/css/main.css" rel="stylesheet">
+	</head>
+	<body>
+		<!--nav scherm -->
+			<nav>
+				<ul id="nav">
+					<li class="link"><a href="#home">Home</a></li>
+					<li class="link"><a href="#details">Search</a></li>
+				</ul>
+			</nav>
+		<!--end nav scherm -->
+		<main>
+	<!--list best practises scherm -->
+			<section id="home" class="content">
+				<header>
+							<h1>Who is your favorite painter?</h1>
+				</header>
+						<select id="eeuw">
+						  <option value="1">1e Eeuw</option>
+						  <option value="2">2e Eeuw</option>
+						  <option value="3">3e Eeuw</option>
+						  <option value="18">18 Eeuw</option>
+						</select>
+
+						<select id="maker">
+							<option value=""></option>
+
+						</select>
+
+
+
+					<div id="home-overview" class="painting" role="section-content"></div>
+
+			</section>
+			<section id="search" class="content hide">
+				<header>
+							<h1>Who is your favorite painter?</h1>
+				</header>
+
+					<form class="search-form" >
+						<input type="text" name="search" id="userInput" required>
+						<input type="submit" id="submit" class="button">
+					</form>
+
+					<div id="painting-overview" class="painting" role="section-content"></div>
+
+			</section>
+			<section id="details" class="content">
+
+				<div id="painting-details" class="painting" role="section-content"></div>
+
+			</section>
+
+			<footer>
+					<h2>
+							<svg class="icon icon-heart"><use xlink:href="#icon-heart"></use></svg>
+							<a href="https://github.com/carloscuesta/generator-starterkit" target="_blank"></a>
+					</h2>
+			</footer>
+
+	<!--end start scherm -->
+		</main>
+		<script id = "home-template" type="text/x-handlebars-template">
+
+
+		{{#each artObjects}}
+
+				<div class ="{{artClassName}}">
+						 <h1>{{principalOrFirstMaker}}</h1>
+
+					{{#if webImage}}
+						<img src="{{webImage.url}}"><img>
+					{{else}}
+						<img src="static/images/background_black.svg"><img>
+					{{/if}}
+
+						<p>{{title}}</p>
+
+				</div>
+		{{/each}}
+		</script>
+
+		<script id = "maker-dropdown" type="text/x-handlebars-template">
+				</select>
+					{{#each artObjects}}
+						<option>{{principalOrFirstMaker}}</option>
+					{{/each}}
+				</select>
+		</script>
+
+
+		<script id = "overview-template" type="text/x-handlebars-template">
+
+		{{#each artObjects}}
+
+				<div id = "{{objectNumber}}" class ="{{artClassName}}">
+						 <h1>{{principalOrFirstMaker}}</h1>
+
+					{{#if webImage}}
+						<img src="{{webImage.url}}"><img>
+					{{else}}
+						<img src="static/images/background_black.svg"><img>
+					{{/if}}
+
+						<p>{{title}}</p>
+
+				</div>
+		{{/each}}
+		</script>
+
+		<script id = "detail-template" type="text/x-handlebars-template">
+
+				<div id="=art-details" class="painting" role="section-content">
+
+						 <h1>{{artMaker}}</h1>
+
+						<img src="{{artImgUrl}}"><img>
+
+						<p>{{artDescription}}</p>
+
+				</div>
+		</script>
+
+
+		<script type="text/javascript" src="./static/js/data.js"></script>
+		<script type="text/javascript" src="./static/js/app.js"></script>
+	</body>
+</html>
+
+
