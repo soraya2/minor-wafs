@@ -1,0 +1,30 @@
+{
+    "name": "rijksmuseum",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "nodemon app.js",
+        "test": "xo",
+        "expose": "ngrok http 3000"
+    },
+
+    "engines": {
+        "node": "v5.7",
+        "npm": "3.6.0"
+    },
+    "dependencies": {
+        "body-parser": "^1.17.1",
+        "dotenv": "^4.0.0"
+    },
+    "xo": {
+        "fix": true,
+        "space": true,
+        "open": true,
+        "esnext": false
+    },
+    "devDependencies": {
+        "ngrok": "^2.2.7",
+        "nodemon": "^1.11.0",
+        "xo": "^0.18.1"
+    }
+}

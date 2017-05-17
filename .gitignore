@@ -4,3 +4,4 @@ node_modules
 .idea/
 bin/
 .env
+eindopdracht/rijksmuseumapi/static/js/config.js
