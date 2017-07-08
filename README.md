@@ -1,15 +1,12 @@
 #Web app from scratch course
 Repo for the Web app from scratch course (minor everything web)
-Single page application
-https://soraya2.github.io/minor-wafs/week1/opdracht5-spa/
-
 
 # Pros and cons jQuery
 jQuery (what is it?)
 jQuery is a JavaScript library that helps to simplify and standardize interactions between JavaScript code and HTML elements. JavaScript allows websites to be interactive and dynamic, and jQuery is a tool that helps streamline that process2.
 
 
-voordelen jQuerie
+Pros 
 - jQuery takes care of crossbrowser compatibility issues1
 You don't have to worry about compatibility across browsers because jQuery degrades gracefully when features are not supported or lacking.
 
@@ -30,14 +27,14 @@ If you are not familiar with the full concept of javascript you might not fully 
 
 # Pros and cons single page application
 
-spa pro's
+SPA pros
 
 - You only have to load the content once 
 Because your loading only one web page it helps users with limited bandwidth.1
 
 
 
-spa cons
+SPA cons
 
 Its seo not friendly 
 - The search engine sees different content and the webpage is therefore not user friendly because the user sees the content that would render if you. Therefore you would get a lower ranking in search engine results. 1
