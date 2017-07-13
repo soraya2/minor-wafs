@@ -1,29 +1,33 @@
-# Twitter feed
+# Rijksmuseum
+The Rijksmuseum application is an Single Page Web App that I created from scratch. The application makes no use of frameworks and is completely build in vanilla javascript. The application makes it possible to search through the art collection of th Rijksmuseum. 
 
-Application with socket io and the twitter api. To be continued.
-## Table of contents
-
-no live link
+## Features
+- Search by name 
+- Filter art by name
+- Filter art century
 
 ## Getting started
 
 Clone the repo and install the dependencies with
 `$ npm install`
 
+Create your own config.js file with these variables:
+```
+var key = {
+    value: "your key"
+};
+
+```
 To start the app run
 `$ npm run start`
 
-Create your own .env file with these variables:
-```
-CONSUMER_KEY=<consumer_key>
-CONSUMER_SECRET=<consumer_secret>
-ACCESS_TOKEN_KEY=<access_token_key>
-ACCESS_TOKEN_SECRET=<access_token_secret>
-```
-
 ### Wishlist
--  [ ] Searching through your own timeline content
--  [ ] Count how much subscription messages you have that match your search criteria
--  [ ] Show top ten trending topics per country
+-  [ ] Adding more filter options
+-  [ ] Store art in the database
 
 
+### Sources
+- http://projects.jga.me/routie/
+- http://rijksmuseum.github.io/
+- http://krampstudio.com/aja.js/
+- http://handlebarsjs.com/
