@@ -20,8 +20,9 @@ var key = {
 
 ```
 To start the app run
-`$ npm run start`
-
+```
+$ npm run start
+```
 ### Wishlist
 -  [ ] Adding more filter options
 -  [ ] Store art in the database
