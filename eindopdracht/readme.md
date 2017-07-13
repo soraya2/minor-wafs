@@ -26,6 +26,12 @@ To start the app run
 -  [ ] Store art in the database
 
 
+## Flow diagram
+![Flow Diagram](./rijksmuseum_app_userflow.png "Flow Diagram")
+
+## SPA Diagram
+![SPA Diagram](./rijksmuseum_appflow.png "Flow Diagram")
+
 ### Sources
 - http://projects.jga.me/routie/
 - http://rijksmuseum.github.io/
