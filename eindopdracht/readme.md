@@ -27,10 +27,10 @@ To start the app run
 
 
 ## Flow diagram
-![Flow Diagram](./rijksmuseum_app_userflow.png)
+![Flow Diagram](https://github.com/soraya2/minor-wafs/blob/master/rijksmuseum_app_userflow.png "Flow Diagram")
 
 ## SPA Diagram
-![SPA Diagram](./rijksmuseum_appflow.png "Flow Diagram")
+![Flow Diagram](./rijksmuseum_appflow.png "Flow Diagram")
 
 ### Sources
 - http://projects.jga.me/routie/
