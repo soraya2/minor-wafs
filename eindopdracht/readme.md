@@ -27,7 +27,7 @@ To start the app run
 
 
 ## Flow diagram
-![Flow Diagram](./rijksmuseum_app_userflow.png "Flow Diagram")
+![Flow Diagram](./rijksmuseum_app_userflow.png)
 
 ## SPA Diagram
 ![SPA Diagram](./rijksmuseum_appflow.png "Flow Diagram")
