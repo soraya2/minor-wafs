@@ -9,8 +9,9 @@ The Rijksmuseum application is an Single Page Web App that I created from scratc
 ## Getting started
 
 Clone the repo and install the dependencies with
-`$ npm install`
-
+```
+$ npm install
+```
 Create your own config.js file with these variables:
 ```
 var key = {
