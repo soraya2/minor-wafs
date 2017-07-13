@@ -13,7 +13,8 @@
             centuryDropdown: document.getElementById('century-dropdown'),
             overview: document.getElementById('overview'),
             detailsView: document.getElementById('details'),
-            sections: document.querySelectorAll('main section'),
+            sections: document.querySelectorAll('main .content'),
+            images: document.querySelectorAll('img')
         },
         templates: {
             overviewTemplate: document.getElementById('overview-template'),
@@ -22,7 +23,8 @@
         },
         url: {
             base: 'https://www.rijksmuseum.nl/api/nl/collection/',
-        }
+        },
+        filters: {}
     };
 
     app = {
@@ -47,8 +49,8 @@
                 });
 
                 promise.then(function(result) {
-
-                    sendData(initiator, data);
+                    view.loader();
+                    sendData(initiator, result);
 
                 }, function(err) {
                     console.log(err); // Error: "It broke"
@@ -57,10 +59,9 @@
             }).go();
         },
 
-        filter: function(data) {
+        filterData: function(data) {
 
-
-            var filterdData = data.artObjects.filter(function(artObject) {
+            var filterData = data.artObjects.filter(function(artObject) {
 
                 if (Object.keys(filters).length === 0) {
                     return Object.keys(filters).every(function(key) {
@@ -87,12 +88,12 @@
                 }
 
             });
-            return filterdData;
+            return filterData;
         },
 
         setFilter: function(filterName, filterValue) {
             var self = this;
-            // console.log(filterValue[0]);
+
             if (filterValue[0] !== 'alles') {
 
                 filters[filterName] = filterValue;
@@ -114,12 +115,22 @@
                 self.setFilter(filterName, filterValue);
                 console.log(filters);
             }
+        },
+        uniqData: function(a) {
+            var data = {};
+            var seen = {};
+            if (a) {
 
-        }
+                data.artObjects = a.filter(function(item) {
+                    return seen.hasOwnProperty(item.principalOrFirstMaker) ? false : (seen[item.principalOrFirstMaker] = true);
+                });
+
+                return data;
+            }
+        },
     };
 
     // CONTROLLER
-
     controller = {
 
         routes: function() {
@@ -129,6 +140,7 @@
                     location.hash = '#home';
                 },
                 home: function() {
+
                     view.toggle(this.path);
 
                 },
@@ -146,47 +158,34 @@
         getData: function(initiator, paintingId, queryString, userQuery) {
             var self = this;
 
-            model.getArtwork(paintingId, queryString, userQuery, getData, initiator);
+            model.getArtwork(paintingId, queryString, userQuery, self.dataCallback, initiator);
 
-            function getData(initiator, data) {
+            // function callback(initiator, data) {
 
-                // console.log(self.uniqData(data.artObjects));
-                self.render('makers', self.uniqData(data.artObjects));
 
-                controller.render(initiator, data);
-            }
-        },
-        uniqData: function(a) {
-            var data = {};
-            var seen = {};
-            if (a) {
-
-                data.artObjects = a.filter(function(item) {
-                    return seen.hasOwnProperty(item.principalOrFirstMaker) ? false : (seen[item.principalOrFirstMaker] = true);
-                });
-
-                return data;
-
-            }
-
+            //     controller.render(initiator, data);
+            //     self.render('makers', self.uniqData(data.artObjects));
+            //     controller.makersDropdown(data);
+            // }
         },
         dataCallback: function(initiator, data) {
 
-            // console.log(data);
             if (Array.isArray(data)) {
                 var art = { artObjects: data };
                 controller.render(initiator, art);
 
             } else {
-
+                controller.render(initiator, data);
+                controller.render('makers', model.uniqData(data.artObjects));
+                controller.makersDropdown(data);
                 controller.render(initiator, data);
             }
-
 
             // if (data.artObjects && data.artObjects.length > 1) {
             // }
 
         },
+
         render: function(initiator, data) {
             var self = this;
 
@@ -194,19 +193,21 @@
                 case 'overview':
 
                     view.overview(data, '');
-                    self.makersDropdown(self.uniqData(data.artObjects));
-                    break;
-                case 'detail':
-                    view.detail(data);
 
                     break;
+
+                case 'detail':
+
+                    view.detail(data);
+                    break;
+
                 case 'makers':
 
                     view.dropdown(data);
-
                     break;
 
                 case 'filter':
+
                     view.overview(data, 'filter');
                     break;
 
@@ -245,12 +246,11 @@
                 promise.then(function(result) {
                     model.arrayCheck(self.name, self.value);
 
-                    controller.dataCallback('filter', model.filter(result));
+                    controller.dataCallback('filter', model.filterData(result));
 
                 }, function(err) {
                     console.log(err); // Error: "It broke"
                 });
-
             });
         },
 
@@ -260,7 +260,6 @@
                 event.preventDefault();
                 self.getData('overview', '', 'q=', config.elements.searchInput.value);
             });
-
         }
     };
 
@@ -282,10 +281,10 @@
                 template = Handlebars.compile(config.templates.overviewTemplate.innerHTML);
                 config.elements.overview.innerHTML = template(data);
             }
-
         },
 
         detail: function(data) {
+            console.log(data);
 
             function returnHtml() {
                 function imageAvailable() {
@@ -297,7 +296,7 @@
 
                 function descriptionAvailable() {
                     if (data.description !== null) {
-                        return data.artObject.description;
+                        return data.artObject.label.description;
                     }
                     return 'Geen beschrijving beschikbaar';
                 }
@@ -307,7 +306,10 @@
 
                     {
                         artMaker: data.artObject.principalOrFirstMaker,
-                        longTitle: data.artObject.longTitle,
+                        title: data.artObject.label.title,
+                        longTitle: data.artObject.label.description,
+                        date: data.artObject.dating.presentingDate,
+                        markLine: data.artObject.label.makerLine,
                         artImgUrl: imageAvailable(),
                         artDescription: descriptionAvailable()
                     }
@@ -318,8 +320,10 @@
         },
 
         dropdown: function(data) {
+            console.log(data);
             var template = Handlebars.compile(config.templates.makersDropdownTemplate.innerHTML); // Compile handlebars template to html
             var htmlContent = template(data); // Insert data in template
+
             config.elements.makersDropdown.innerHTML = htmlContent;
         },
 
@@ -333,7 +337,19 @@
                 sectionsId = sections[i].id;
 
                 (sectionsId === route) ? selectSection.classList.remove('hide'): selectSection.classList.add('hide');
+
+                if (route === "home") {
+
+                    config.elements.searchForm.parentElement.classList.remove('hide');
+
+                }
             }
+        },
+        loader: function() {
+            console.log('loader');
+
+            config.elements.overview.innerHTML = '';
+
         }
     };
     app.init();

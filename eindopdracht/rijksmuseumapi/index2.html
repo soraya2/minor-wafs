@@ -15,7 +15,7 @@
   <nav>
     <ul id="nav">
       <li class="link"><a href="#home">Home</a></li>
-      <li><img class="logo" src="static/images/logo-rijksmuseum.png"></li>
+      <li class="link"><a href="#details">Search</a></li>
     </ul>
   </nav>
   <!--end nav scherm -->
@@ -23,14 +23,14 @@
     <!--list best practises scherm -->
     <section id="home" class="content">
       <header>
-        <h1>Wie is jouw favoriete schilder?</h1>
+        <h1>Who is your favorite painter?</h1>
       </header>
       <div id="search" class="content">
-        <form id="search-form" class="search-form">
-          <input type="text" name="search" id="user-input" required>
-          <input type="submit" id="submit" value="Zoek" class="button btn">
+        <form class="search-form">
+          <input type="text" name="search" id="userInput" required>
+          <input type="submit" id="submit" class="button">
         </form>
-        <select name="" id="century-dropdown">
+        <select id="eeuw">
           <option value="">alles</option>
           <option value="13">13e Eeuw</option>
           <option value="14">14e Eeuw</option>
@@ -42,65 +42,56 @@
           <option value="20">20e Eeuw</option>
           <option value="21">21e Eeuw</option>
         </select>
-        <select name="principalOrFirstMaker" id="makers-dropdown">
+        <select id="maker">
           <option value=""></option>
         </select>
         <div id="painting-overview" class="painting" role="section-content"></div>
       </div>
-      <div id="overview" class="painting" role="section-content">
-        <div class="loader"></div>
-      </div>
+      <div id="home-overview" class="painting" role="section-content"></div>
     </section>
     <section id="details" class="content">
-      <!--    <div id="painting-details" class="painting" role="section-content"></div> -->
+      <div id="painting-details" class="painting" role="section-content"></div>
     </section>
+    <footer>
+      <h2>
+        <svg class="icon icon-heart"><use xlink:href="#icon-heart"></use></svg>
+        <a href="https://github.com/carloscuesta/generator-starterkit" target="_blank"></a>
+      </h2>
+    </footer>
     <!--end start scherm -->
   </main>
-  <script id="overview-template" type="text/x-handlebars-template">
+  <script id="home-template" type="text/x-handlebars-template">
     {{#each artObjects}}
       <a href="#details/{{objectNumber}}" class="art-objects">
+        <h1>{{principalOrFirstMaker}}</h1>
         {{#if webImage}}
-          <img src="{{webImage.url}}">
+          <img src="{{webImage.url}}"><img>
         {{else}}
-          <img src="static/images/background_black.svg">
+          <img src="static/images/background_black.svg"><img>
         {{/if}}
-        <section>
-          <h1>{{principalOrFirstMaker}}</h1>
-          <p>{{title}}</p>
-        </section>
+        <p>{{title}}</p>
       </a>
     {{/each}}
     </a>
   </script>
-  <script id="makers-dropdown-template" type="text/x-handlebars-template">
+  <script id="maker-dropdown" type="text/x-handlebars-template">
     </select>
-    <option>alles</option>
+    <option>Iedereen</option>
     {{#each artObjects}}
-      {{#if principalOrFirstMaker}}
-        <option>{{principalOrFirstMaker}}</option>
-      {{else}}
-        <option value="">Onbekend</option>
-      {{/if}}
+      <option>{{principalOrFirstMaker}}</option>
     {{/each}}
     </select>
   </script>
-  <script id="details-template" type="text/x-handlebars-template">
-    <a href="#home" class="btn">Terug naar zoeken</a>
-    <div id="art-details" class="painting" role="section-content">
-      <img src="{{artImgUrl}}">
-      <article>
-        <h1>{{title}}</h1>
-        <ul class="meta">
-          <li>{{artMaker}}</li>
-          <li>{{date}}</li>
-        </ul>
-        <!-- <h3>{{markLine}}</h3> -->
-        <p>{{artDescription}}</p>
-      </article>
+  <script id="detail-template" type="text/x-handlebars-template">
+    <a href="#home">Terug naar zoeken</a>
+    <div id="=art-details" class="painting" role="section-content">
+      <h1>{{artMaker}}</h1>
+      <img src="{{artImgUrl}}"><img>
+      <p>{{artDescription}}</p>
     </div>
   </script>
   <script type="text/javascript" src="./static/js/config.js"></script>
-  <script type="text/javascript" src="./static/js/app.js"></script>
+  <script type="text/javascript" src="./static/js/app2.js"></script>
   <!-- <script type="text/javascript" src="./static/js/app.js"></script> -->
 </body>
 

@@ -15,8 +15,6 @@
         init: function() {
             controller.routes();
             controller.searchInput();
-
-
             controller.getDropdownValue();
             controller.selectNameMaker();
         }
@@ -98,7 +96,7 @@
         },
         getPaintingDetails: function(paintId) {
             // console.log(paintId);
-            aja().url(config.baseUrl + paintId + '?key=' + key.value + '&format=json').on('success', function(info) {
+            aja().url(config.baseUrl + paintId + '?key=' + key.value + '&format=json&').on('success', function(info) {
                 var artworkInfo = info.artObject;
                 view.paintingDetails(artworkInfo);
             }).go();
@@ -115,7 +113,7 @@
                 dropdownValue = '=' + dropdownValue;
                 return dropdownValue;
             }
-            aja().url(config.baseUrl + '?key=' + key.value + '&format=json&ps=20&f.dating.period' + dropdownValueCheck()).on('success', function(info) {
+            aja().url(config.baseUrl + '?key=' + key.value + '&format=json&' + 'ps=20&f.dating.period' + dropdownValueCheck()).on('success', function(info) {
                 var artworkInfo = info.artObjects;
                 view.paintingCentury(info);
                 controller.selectNameMaker(info);
