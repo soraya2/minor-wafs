@@ -25,7 +25,7 @@ $ npm run start
 ```
 ### Wishlist
 -  [ ] Adding more filter options
--  [ ] Store art in the database
+-  [ ] Store art in the database for faster results
 
 
 ## Flow diagram
