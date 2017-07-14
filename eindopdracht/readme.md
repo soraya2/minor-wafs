@@ -33,7 +33,7 @@ $ npm run start
 
 
 ## Flow diagram
-![Flow Diagram](https://github.com/soraya2/minor-wafs/blob/master/rijksmuseum_app_userflow.png "Flow Diagram")
+![Flow Diagram](./rijksmuseum_app_userflow.png "Flow Diagram")
 
 ## SPA Diagram
 ![Flow Diagram](./rijksmuseum_appflow.png "Flow Diagram")
