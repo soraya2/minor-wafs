@@ -1,6 +1,10 @@
 # Rijksmuseum
 The Rijksmuseum application is an Single Page Web App that I created from scratch. The application makes no use of frameworks and is completely build in vanilla javascript. The application makes it possible to search through the art collection of th Rijksmuseum. 
 
+## Live link
+
+http://rijksmuseumapp.surge.sh/
+
 ## Features
 - Search by name 
 - Filter art by name
