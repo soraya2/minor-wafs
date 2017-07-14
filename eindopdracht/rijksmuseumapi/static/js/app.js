@@ -81,9 +81,7 @@
                     return filters[keyNaam].some(function(filterOptions) { // Compare filter options with serie tags
 
                         return filterOptions === artObject[keyNaam];
-                        // return artObject[keyNaam].some(function(maker) {
 
-                        // });
                     });
                 }
 
@@ -160,13 +158,6 @@
 
             model.getArtwork(paintingId, queryString, userQuery, self.dataCallback, initiator);
 
-            // function callback(initiator, data) {
-
-
-            //     controller.render(initiator, data);
-            //     self.render('makers', self.uniqData(data.artObjects));
-            //     controller.makersDropdown(data);
-            // }
         },
         dataCallback: function(initiator, data) {
 
@@ -180,9 +171,6 @@
                 controller.makersDropdown(data);
                 controller.render(initiator, data);
             }
-
-            // if (data.artObjects && data.artObjects.length > 1) {
-            // }
 
         },
 
@@ -320,7 +308,7 @@
         },
 
         dropdown: function(data) {
-            console.log(data);
+
             var template = Handlebars.compile(config.templates.makersDropdownTemplate.innerHTML); // Compile handlebars template to html
             var htmlContent = template(data); // Insert data in template
 
@@ -339,6 +327,7 @@
                 (sectionsId === route) ? selectSection.classList.remove('hide'): selectSection.classList.add('hide');
 
                 if (route === "home") {
+                    controller.getData('overview', '', 'p=1&ps=5', '');
 
                     config.elements.searchForm.parentElement.classList.remove('hide');
 
@@ -346,7 +335,6 @@
             }
         },
         loader: function() {
-            console.log('loader');
 
             config.elements.overview.innerHTML = '';
 

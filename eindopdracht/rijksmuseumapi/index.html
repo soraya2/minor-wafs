@@ -58,17 +58,21 @@
   </main>
   <script id="overview-template" type="text/x-handlebars-template">
     {{#each artObjects}}
-      <a href="#details/{{objectNumber}}" class="art-objects">
+      <section class="art-objects">
         {{#if webImage}}
           <img src="{{webImage.url}}">
         {{else}}
           <img src="static/images/background_black.svg">
         {{/if}}
         <section>
-          <h1>{{principalOrFirstMaker}}</h1>
+          <!-- <h1>{{principalOrFirstMaker}}</h1>
+ -->
+          <a href="#details/{{objectNumber}}" class="detail-link">
+            <h1>{{principalOrFirstMaker}}</h1>
+          </a>
           <p>{{title}}</p>
         </section>
-      </a>
+      </section>
     {{/each}}
     </a>
   </script>

@@ -320,12 +320,34 @@ input[type='text']:hover {
 #overview .art-objects {
     display: flex;
     flex-direction: column;
+    position: relative;
     // width: 95%;
     box-shadow: 1px 1px 5px lightgrey;
     margin: 0.5em 0;
     border-radius: 0.1rem;
     background: white;
     padding: 1em;
+    color: #990000;
+    text-decoration: none;
+}
+
+#overview .art-objects a {
+    color: #990000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#overview .art-objects a:hover {
+    text-decoration: underline;
+}
+
+#overview .art-objects a::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
 }
 
 #overview .art-objects section {
